@@ -1,0 +1,36 @@
+If the student at the front of the queue prefers the sandwich on the top of the stack, they will take it and leave the queue.
+Otherwise, they will leave it and go to the queue's end.
+
+class Solution {
+    public int countStudents(int[] students, int[] sandwiches) {
+       Queue<Integer> q=new LinkedList<>();
+	Stack<Integer> s=new Stack<>();
+
+	for(int i: students){
+		q.add(i);
+	}
+
+	for(int i=sandwiches.length-1;i>=0;i--){
+		s.add(sandwiches[i]);
+	}
+
+	int counter=q.size()*s.size();
+	
+	while(counter-->0){
+		if(q.peek()==s.peek()){
+			q.remove();
+			if(q.size()==0){
+				return 0;
+			}
+			s.pop();
+		}
+		else{
+			
+			q.add(q.remove());
+		}
+	}
+
+	return q.size();
+
+    }
+}
