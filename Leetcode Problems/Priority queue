@@ -1,0 +1,24 @@
+// Priority queue= Last stone Weight
+
+class Solution {
+    public int lastStoneWeight(int[] stones) {
+        //Max heap
+        PriorityQueue<Integer> q =  new PriorityQueue<Integer>(Collections.reverseOrder());
+        for(int x:stones)
+        {
+            q.add(x);
+        }
+        int y,x;
+        while(q.size()>1)
+        {
+             y=q.poll();
+             x=q.poll();
+            if(y>=x)
+                q.add(y-x);
+        }
+        if(q.size()==0)
+            return 0;
+        else
+            return q.poll();
+    }
+}
