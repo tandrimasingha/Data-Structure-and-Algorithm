@@ -1,0 +1,26 @@
+Number of Laser Beams in a Bank
+Level: Medium
+
+class Solution {
+    public int numberOfBeams(String[] bank) {
+        List<Integer> lst=new ArrayList<>();
+        int res=0;
+        for(String s:bank)
+        {
+            int count=0;
+            for(char ch:s.toCharArray())
+            {
+                if(ch=='1')
+                    count++;
+            }
+            if(count!=0)
+                lst.add(count);
+        }
+        for(int i=0;i<lst.size()-1;i++)
+        {
+            int temp=lst.get(i)*lst.get(i+1);
+            res+=temp;
+        }
+        return res;
+    }
+}
