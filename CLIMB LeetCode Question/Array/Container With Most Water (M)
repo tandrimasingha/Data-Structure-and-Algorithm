@@ -1,0 +1,23 @@
+Container With Most Water
+
+// Two Pointer Approach
+
+class Solution {
+    public int maxArea(int[] height) {
+        int l=0;  //left pointer
+        int r=height.length-1;  //right pointer
+        int maxwater=0;
+        while(l<r)
+        {
+            int lv=height[l];
+            int rv=height[r];
+            int min = Math.min(lv,rv);
+            maxwater=Math.max(maxwater,min*(r-l));
+            if(lv<rv) l++;
+            else
+                r--;
+        }
+        return maxwater;
+        
+    }
+}
