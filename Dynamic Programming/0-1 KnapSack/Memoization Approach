@@ -1,0 +1,31 @@
+class Solution
+{
+    
+    int memoization(vector<vector<int>>&t , int W, int wt[], int val[], int n){
+         if(n==0 || W==0)
+       return 0;
+       
+       if(t[n][W]!=-1)
+       return t[n][W];
+       
+       if(wt[n-1]<=W){
+       return t[n][W]= max(val[n-1]+ memoization(t,W-wt[n-1],wt,val,n-1),memoization(t,W,wt,val,n-1));
+       
+       
+       }
+       
+       else if(wt[n-1]>W){
+       return t[n][W]=memoization(t,W,wt,val,n-1);
+      
+       }
+    }
+    public:
+    //Function to return max value that can be put in knapsack of capacity W.
+    int knapSack(int W, int wt[], int val[], int n) 
+    { 
+       // Your code here
+       vector<vector<int>> t(n+1,vector<int>(W+1,-1));
+       return memoization(t,W,wt,val,n);
+      
+    }
+};
