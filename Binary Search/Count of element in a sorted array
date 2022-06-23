@@ -1,3 +1,5 @@
+
+
 int Search_1stoccurence(int a[] , int key , int n)
 {
     int l = 0;
