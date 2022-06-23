@@ -1,0 +1,55 @@
+int Search_1stoccurence(int a[] , int key , int n)
+{
+    int l = 0;
+    int h = n-1;
+    int mid;
+    int result = -1;
+    while(l<=h)
+    {
+         mid = l + (h-l)/2;
+        if(key==a[mid])//if it is equal to 10 , it will be possible ans
+        {
+         result = mid;
+         h = mid-1;
+        }
+        else if(key<a[mid])
+        {
+            h = mid-1;
+        }
+        else{
+            l = mid+1;
+        }
+    }
+    return result;
+}
+int Search_lastoccurence(int a[] , int key , int n)
+{
+    int l = 0;
+    int h = n-1;
+    int mid;
+    int result  = -1;
+    while(l<=h)
+    {
+        mid = l + (h-l)/2;
+        if(key==a[mid])
+        {
+            result = mid;
+            l = mid +1 ;
+        }
+        else if(key<a[mid])
+        {
+            h = mid-1;
+        }
+        else{
+            l = mid+1;
+        }
+    }
+    return result;
+}
+int count10(int a[] , int key  , int n)
+{
+      int k3 = Search_1stoccurence(a , key , n);
+      int k4 = Search_lastoccurence(a , key , n);
+      return k4 - k3 + 1;
+}
+
