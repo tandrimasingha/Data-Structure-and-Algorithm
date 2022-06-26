@@ -1,0 +1,32 @@
+
+class Solution
+{
+    void func(string s,int ind,set<string> &v)
+    {
+      if(s.size()==ind)
+      {
+         v.insert(s);
+         return;
+      }
+      for(int i=ind;i<s.size();i++)
+      {
+          swap(s[ind],s[i]);
+          func(s,ind+1,v);
+          swap(s[ind],s[i]);
+      }
+    }
+	public:
+		vector<string>find_permutation(string S)
+		{
+		    // Code here there
+		    set<string> v;
+		    vector<string> vec;
+		    func(S,0,v);
+		    for(auto it:v)
+		    {
+		        vec.push_back(it);
+		    }
+		    sort(vec.begin(),vec.end());
+		    return vec;
+		}
+};
