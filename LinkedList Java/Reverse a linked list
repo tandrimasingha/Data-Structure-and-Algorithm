@@ -1,0 +1,21 @@
+
+class Solution
+{
+    //Function to reverse a linked list.
+    Node reverseList(Node head)
+    {
+        // code here
+        Node dummy=null;
+        Node curr=head;
+        Node nxt=head;
+        while(curr!=null)
+        {
+            nxt=nxt.next;
+            curr.next=dummy;
+            dummy=curr;
+            curr=nxt;
+            
+        }
+        return dummy;
+    }
+}
