@@ -1,0 +1,31 @@
+
+class Solution
+{
+    public:
+    int areMirror(Node* a, Node* b) {
+    // Your code here
+    if(a==NULL || b==NULL)
+            return a == b;
+        return a->data==b->data&& areMirror(a->left, b->right) && areMirror(a->right, b->left);
+    }
+
+};
+
+// { Driver Code Starts.
+
+int main() {
+    int tc;
+    scanf("%d ", &tc);
+    while (tc--) {
+        string treeString1, treeString2;
+        getline(cin, treeString1);
+        Node *root1 = buildTree(treeString1);
+
+        getline(cin, treeString2);
+        Node *root2 = buildTree(treeString2);
+
+        Solution ob;
+        cout << ob.areMirror(root1, root2) << "\n";
+    }
+    return 0;
+} 
