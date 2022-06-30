@@ -1,0 +1,20 @@
+
+class Solution {
+  public:
+    // Function to return the diameter of a Binary Tree.
+    int height(Node* root, int& dia)
+    {
+        if(root==NULL) return 0;
+        int lh=height(root->left,dia);
+        int rh=height(root->right,dia);
+        dia=max(dia,rh+lh+1);
+        return 1+max(lh,rh);
+        
+    }
+    int diameter(Node* root) {
+        // Your code here
+        int dia=0;
+        height(root,dia);
+        return dia;
+    }
+};
