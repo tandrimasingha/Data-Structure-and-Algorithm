@@ -1,0 +1,32 @@
+
+struct Node {
+    int data;
+    Node *left;
+    Node *right;
+
+    Node(int val) {
+        data = val;
+        left = right = NULL;
+    }
+};
+*/
+class Solution{
+    public:
+    bool symm(struct Node* lefty, struct Node* righty)
+    {
+        if(lefty==NULL || righty==NULL)
+        return lefty==righty;
+        
+        if(lefty->data!=righty->data) return false;
+        
+        return symm(lefty->left,righty->right) && symm(lefty->right,righty->left);
+    }
+    // return true/false denoting whether the tree is Symmetric or not
+    bool isSymmetric(struct Node* root)
+    {
+	    // Code here
+	    if(root==NULL) return 1;
+	    return symm(root->left,root->right);
+	    
+    }
+};
