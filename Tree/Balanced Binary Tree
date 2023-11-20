@@ -1,0 +1,17 @@
+class Solution {
+public:
+int check(TreeNode* root)
+{
+    if(root==NULL) return true;
+    int lh=check(root->left);
+    int rh=check(root->right);
+    if(lh==-1|| rh==-1) return -1;
+    if(abs(rh-lh)>1) return -1;
+    return 1+max(lh,rh);
+}
+    bool isBalanced(TreeNode* root) {
+        if(check(root)!=-1) return true;
+        else return false;
+
+    }
+};
